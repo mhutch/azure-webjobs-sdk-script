@@ -549,7 +549,7 @@
     <Copy SourceFiles="..\..\packages\FSharp.Core.4.0.0.1\lib\net40\FSharp.Core.sigdata" DestinationFolder="$(TargetDir)" />
   </Target>
   <Import Project="..\..\packages\Microsoft.Azure.DocumentDB.1.10.0\build\Microsoft.Azure.DocumentDB.targets" Condition="Exists('..\..\packages\Microsoft.Azure.DocumentDB.1.10.0\build\Microsoft.Azure.DocumentDB.targets')" />
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(OS)'!='Unix'">
     <PostBuildEvent>xcopy "$(ProjectDir)..\WebJobs.Script.Tests.Integration\TestScripts" "$(TargetDir)TestScripts\" /S /Y /I</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
